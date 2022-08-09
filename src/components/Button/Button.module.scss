@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+@import '../../styles/colors.module.scss';
+
+.btn {
+  background: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: $border-radius;
+  border: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  box-shadow: $box-shadow;
+  color: get-color(dark);
+  max-width: 100%;
+  font-size: 1rem;
+
+  &.btn_primary {
+    background-color: get-color(primary);
+    &:hover,
+    &:focus {
+      background-color: darken(get-color(primary), 15%);
+      color: #fff;
+    }
+  }
+
+  &.btn_accent1 {
+    background-color: get-color(accent1);
+    color: #fff;
+    &:hover,
+    &:focus {
+      background-color: darken(get-color(accent1), 15%);
+    }
+  }
+}
+
+.btn_md {
+  padding: 0rem 3rem;
+  height: 50px;
+
+  @include for-phone-only {
+    padding: 0rem 1rem;
+  }
+}
+
+.btn_sm {
+  padding: 0.5rem;
+  font-size: 16px;
+  @include for-phone-only {
+    padding: 0.15rem;
+  }
+}
+
+.btn_full_width {
+  width: 100%;
+}

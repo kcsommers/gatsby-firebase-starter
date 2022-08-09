@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use 'sass:color';
+
+$colors: (
+  success: #22bc33,
+  error: #cc0023,
+  light: #f1f1f1,
+  dark: #030e12,
+  primary: #fcde67,
+  accent1: #5bccf6,
+);
+
+// Generated color lists
+// $generated: ();
+
+// // For each defined color
+// @each $name, $color in $colors {
+//   // Current color map
+//   $current: ();
+
+//   // Generates the colors transformations (shades)
+//   @for $i from 1 through 9 {
+//     $current: append($current, lighten($color, (100 - ($i * 10))));
+//   }
+
+//   // Adds the current color
+//   $current: append($current, $color);
+
+//   // Generates the colors transformations (tints)
+//   @for $i from 11 through 19 {
+//     $current: append($current, darken($color, ($i * 10) - 100));
+//   }
+
+//   // If the map has not been created
+//   $generated: map.merge(
+//     $generated,
+//     (
+//       $color: $current,
+//     )
+//   );
+// }
+
+// Create a function to get the desired color
+@function get-color($color, $index: 10) {
+  @return map.get($colors, $color);
+  // // Default to base color
+  // // Get the desired color map
+  // $list: map.get($generated, $color);
+  // // Return the color index
+  // @return nth($list, $index);
+}
+
+@function hex2rgb($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+:export {
+  success: (get-color('success', 1), hex2rgb(map.get($colors, 'success')));
+  error: (map.get($colors, 'error'), hex2rgb(map.get($colors, 'error')));
+  light: (map.get($colors, 'light'), hex2rgb(map.get($colors, 'light')));
+  dark: (map.get($colors, 'dark'), hex2rgb(map.get($colors, 'dark')));
+  primary: (map.get($colors, 'primary'), hex2rgb(map.get($colors, 'primary')));
+  accent1: (map.get($colors, 'accent1'), hex2rgb(map.get($colors, 'accent1')));
+}
